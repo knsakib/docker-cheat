@@ -3,43 +3,27 @@
 ## docker build -f Dockerfile.dev .
 
 ```
--f is to specify the filename other than default Dockerfile
+We ran it first to execute test
 ```
 
-### What we did (avoiding duplicate copies)
+## docker run image_id/name npm run test
 ```
-We deleted the node_modules folder as we are running Docker in dev environment and there is no point of
-keeping both node_modules folder. It is showing 150 MB because it copies node_modules in the container
-```
-
-
-## docker run -p 3000:3000 image_id/name
-```
-Port Mapping
+After Docket run we will append the command that we want to run inside Docker container.
 ```
 
-
-### What we did (volume mapping)
+### What we did (To execute the test)
 ```
-It is not updating when we update anything in the file, like it does in case of regular react. So, we map
-the volume of docker container to volume of our local machine. That we made a reference of /src and /public
-folder of our local machine in the docker container. So, now if we change anything it works.  
+One we ran the test command, we need to select or give input inside docker container to select which we test we want to execute.
+By default we get stdout connection inside the container. But to get stdin we need to to run extra command which os '-it'
 ```
 
-
-## docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app image_id/name
+## docker run -it image_id/name npm run test
 ```
-By $(pwd):/app image_id/name we mapped present working directory to container app directory. However we deleted
-our node_modules folder. So, the app can not really run inside the container because the is no reference of
-node_modules. To fix this, we use additional -v with one argument, which is the folder that we do not want to map
-outside of the container.    
+Now we got a shell inside docker container. We can select test suit selection. However, when we are running test we are getting an error.
+TypeError: Cannot assign to read only property 'Symbol(Symbol.toStringTag)' of object '#<process>
 ```
 
-
-## docker-compose up
+### What we did (Change the node version for now to execute the test)
 ```
-We created docker-compose.yml. We defined the build context and override the docker file. Now do we need COPY . .?
-Because even we are telling to copy everything, we are referencing the volume from our local machine. That is true.
-We do not need that line and delete that. But In production we need that line. As we will create Dockerfile with
-the inspiration of Dockerfile.dev, we are keeping that line.     
+We change node version from 'FROM node:alpine' to 'FROM node:10.15-alpine'. Then we run or select any specific test inside the container. We can exit etc.
 ```
