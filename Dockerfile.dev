@@ -1,0 +1,15 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+
+COPY . .
+
+CMD ["npm", "run", "start"]
+
+#docker build -f Dockerfile.dev .
+# -f is to specify the filename other than default Dockerfile
+
+#docker run -p 3000:3000 image_id/name 
