@@ -6,5 +6,5 @@ before install:
   - docker build -t knsakib/docker-cheat -f Dockerfile.dev .
 
 script:
-  - docker build knsakib/docker-cheat npm run test -- --coverage
+  - docker run knsakib/docker-cheat npm run test -- --coverage
   ## docker run image_ID/name npm run test -- --coverage
