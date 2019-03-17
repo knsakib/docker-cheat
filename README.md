@@ -1,12 +1,16 @@
 # docker-cheat
 
-### What we did (To execute Prod Environment)
+### What we did (To Establish a CI/CD with AWS)
 ```
-We do it in multiple pahes. We defined the build phase as builder and then we use that build phase
-in run phase where we start the nginx container.
+We used Travis CI. We have written .travis.yml
 ```
 
-## docker run -p 8080:80 45be89e10637
+## docker run image_ID/name npm run test -- --coverage
 ```
-We map the port 8080 of our local machine to the 80 port of the container 
+This will run the test and exit otherwise it will exit the test process. Please keep in mind that
+this image ID here is baed on Dockerfile.dev. In production build we do not have test suit built.
+But during running of test suit there is no way to coming out of the test-suit automatically (no
+button press). It waits for input from us or machine. That is why we ran the above command.
+Travis CI will consider the status code coming from that command to determine whether the
+test is successful or not.   
 ```
