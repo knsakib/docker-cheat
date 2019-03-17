@@ -3,8 +3,8 @@ services:
   -docker
 
 before install:
-  - docker build -t knsakib/docker-cheat -f Dockerfile.dev .
+  - docker build -t docker-cheat -f Dockerfile.dev .
 
 script:
-  - docker run knsakib/docker-cheat npm run test -- --coverage
+  - docker run docker-cheat npm run test -- --coverage
   ## docker run image_ID/name npm run test -- --coverage
