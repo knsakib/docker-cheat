@@ -19,5 +19,5 @@ deploy:
   on:
     branch: Lesson-91-AWS-Beanstalk-Automatic-Deployment
   access_key_id: $AWS_BEANSTALK_ACCESS_KEY
-  secret_access_ket:
+  secret_access_key:
     secure: "$AWS_BEANSTALK_ACCESS_SECRET"
