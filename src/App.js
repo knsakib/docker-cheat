@@ -9,11 +9,10 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            I am a Pull request from <br>
-            Lesson-95-Pull-Request-From-This-Branch <br>
+            I am a Pull request from <br />
+            Lesson-95-Pull-Request-From-This-Branch <br />
             To Lesson-91-AWS-Beanstalk-Automatic-Deployment
           </p>
-
         </header>
       </div>
     );
