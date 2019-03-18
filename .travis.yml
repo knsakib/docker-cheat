@@ -3,8 +3,21 @@ services:
   - docker
 
 before_install:
-  - docker build -t docker-cheat -f Dockerfile.dev .
+  - docker build -t knsakib/docker-cheat -f Dockerfile.dev .
 
 script:
-  - docker run docker-cheat npm run test -- --coverage
+  - docker run knsakib/docker-cheat npm run test -- --coverage
   ## docker run image_ID/name npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ca-central-1"
+  app: "docker-cheat"
+  env: "DockerCheat-env"
+  bucket_name: "elasticbeanstalk-ca-central-1-194714129889"
+  bucket_path: "docker-cheat"
+  on:
+    branch: Lesson-91-AWS-Beanstalk-Automatic-Deployment
+  access_key_id: $AWS_BEANSTALK_ACCESS_KEY
+  secret_access_ket:
+    secure: "$AWS_BEANSTALK_ACCESS_SECRET"
