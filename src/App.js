@@ -9,16 +9,10 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Buy!
+            I am a Pull request from <br />
+            Lesson-95-Pull-Request-From-This-Branch <br />
+            To Lesson-91-AWS-Beanstalk-Automatic-Deployment
           </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
         </header>
       </div>
     );
