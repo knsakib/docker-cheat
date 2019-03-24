@@ -10,7 +10,7 @@ class Fib extends Component {
     };
 
     componentDidMount(){
-        tjhis.fetchValues();
+        this.fetchValues();
         this.fetchIndexes();
 
     }
@@ -75,3 +75,5 @@ class Fib extends Component {
         )
     }
 }
+
+export default Fib;
