@@ -3,12 +3,11 @@
     "express": "4.16.3",
     "pg": "7.4.3",
     "redis": "2.8.0",
-    "cors" : "2.8.4",
-    "nodemon":"1.18.3",
-    "body-parser":"*"
+    "cors": "2.8.4",
+    "nodemon": "1.18.3",
+    "body-parser": "*"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon"
