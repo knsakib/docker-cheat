@@ -1,13 +1,13 @@
 # docker-cheat
 
-### CI/CD of Docker with Travis CI in AWS Beanstalk
+### Multi Docker App
 ```
-We used Travis CI. We have written .travis.yml
-```
+Frontend: React
 
-## EXPOSE 80
-```
-We need this in Dockerfile as AWS needs to know which port needs to map.
-This is not automatically possible in localhost. In Localhost we need run
-somehow(command line pr docker-compose) port map command.  
+Backend: 
+1. Express will store permanent list of indexes that have been received
+2. Express will store all the "indexes" and "calculated values" as key-pairs
+3. Worker watches redis for new indexes, pulls each new indexes, calcualtes 
+new value then puts back it into redis
+
 ```
