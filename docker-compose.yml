@@ -1,0 +1,15 @@
+version: '3'
+services: 
+  postgress: 
+    image: 'postgres:latest'
+  redis:
+    image: 'redis:latest'
+  server:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./server
+    voluems:
+      - /app/node_modules
+      - ./server:/app
+
+
