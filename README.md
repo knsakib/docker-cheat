@@ -47,7 +47,7 @@ So, the client thinks it needs to make request to the /api.
 ```
 This routes are defined in default.conf by upstream
 servers at client:3000 and server:5000. 
-These are defined a 'services'(service names) in dockerfile.
+These are defined a 'services'(service names) in docker-compose.yml.
 We changed the service name from 'server' to 'api' to avoid
 the conflict server name used in default.conf of nginx.
 
