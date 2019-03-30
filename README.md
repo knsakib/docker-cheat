@@ -11,24 +11,27 @@ Backend:
 new value then puts back it into redis
 
 ```
-
-### Environment Variables
+### Production Dockerfile
 ```
-When we define varaibles in docker-compose we define runtime variables. 
-That means only wehn the container is started up. That means it is not 
-encoded inside the image. The image does not have any memory of 
-this environment variables. 
+Created Production Dockerfile.  
 ```
-## variableName=value
+## nginx-serving-react
 ```
-When we define varaibles like that, these variables are set up inside 
-container during the container creation.    
+This is to serve react static front end.     
 ```
-## variableName
+## nginx-router
 ```
-If we use this syntax without specifying any value, this value will be 
-taken from my machine or the machine docker container is running. It is 
-just reference to that orginal value.   
+This is to serve routing between different services.     
+```
+## Test case in App.test.js
+```
+We remove the render method(temporarily for this example). Because Render 
+method will try render app component will eventually render Fib component
+which will try to send a request to backend which is not currently
+runniung at the time of sending of request. In the time real 
+development, this test will conducted by initiating test express 
+server snd return some dummy json data. Currently it will pass
+100% of the time.    
 ```
 
 ### How we will route the request 
