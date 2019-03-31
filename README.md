@@ -11,65 +11,18 @@ Backend:
 new value then puts back it into redis
 
 ```
-### Production Dockerfile
+### Written a .travis.yml
 ```
-Created Production Dockerfile.  
-```
-## nginx-serving-react
-```
-This is to serve react static front end.     
-```
-## nginx-router
-```
-This is to serve routing between different services.     
-```
-## Test case in App.test.js
-```
-We remove the render method(temporarily for this example). Because Render 
-method will try render app component will eventually render Fib component
-which will try to send a request to backend which is not currently
-runniung at the time of sending of request. In the time real 
-development, this test will conducted by initiating test express 
-server snd return some dummy json data. Currently it will pass
-100% of the time.    
+We have written the .travis.yml fi.e The build context changed now to different 
+folders instead of just '.' as there is multiple docker containers. 
+The test command will run in before install section. -- --coverage flag
+is for exiting the test with an status code instead of running is continuously.
+After test is sucessful we ran: docker build -t image-name build-context
 ```
 
-### How we will route the request 
+### push the images to Docker Hub
 ```
-In our server side index.js we are using route handler like
-/value/current, /values/all, /values. 
-
-On the otherhand in the client side Fib.js we are making 
-network request(api request)
-/api/values/current, 
-/api/values/all. 
-So, the client thinks it needs to make request to the /api. 
-```
-
-### What Nginx will do to solve above scenerio
-```
-This routes are defined in default.conf by upstream
-servers at client:3000 and server:5000. 
-These are defined a 'services'(service names) in docker-compose.yml.
-We changed the service name from 'server' to 'api' to avoid
-the conflict server name used in default.conf of nginx.
-
-``` 
-
-### Reqrite Rules
-```
-When incoming request comes, Nginx will look into it, more
-specifically it will look into the request path. If the path 
-contains '/api/', it will route the request to api express server. 
-If the request  path contains '/', it will route the request 
-to React server. requests with path /api/values/all will be 
-handled by /api route of  Nginx. Nginx then route these 
-requests to the all /values/all route of express backend 
-[we will do it intentionally by rewrite rule] which is 
-
-rewrite /api/(.*) /$1 break.
-$1 means whatever matches after /api/ and break means: 
-do not try to apply any other rewrite rules after applying 
-this one. This will prevent nginx to 
-continue to match to a new the route or path.  
+Instead of building the images and pushing this directly to elastic beanstalk
+we will push the images to docker hub and pull the images in beanstalk 
+from docker hub. We did it by putting docker id and pass in env variables.
 ```
