@@ -4,19 +4,15 @@ services:
   - docker
 before_install:
   - docker build -t knsakib/react-test -f ./client/Dockerfile.dev ./client
-
 secript: 
   - docker run knsakib/react-test npm test -- --coverage 
-
 after_sucess:
   - docker build -t knsakib/react-client ./client
   - docker build -t knsakib/nginx-router ./nginx-router
   - docker build -t knsakib/express-api-server ./server
   - docker build -t knsakib/fib-worker ./worker
-  
   # Login to Docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-
   #Push the images to Docker Hub
   - docker push knsakib/react-client
   - docker push knsakib/nginx-router
