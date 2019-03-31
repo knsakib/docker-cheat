@@ -32,11 +32,6 @@ firebase-debug.log*
 # dotenv environment variables file
 .env
 
-# production
-/build
-
-
-
 # dependencies
 /node_modules
 /.pnp
@@ -54,7 +49,3 @@ firebase-debug.log*
 .env.development.local
 .env.test.local
 .env.production.local
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
