@@ -9,7 +9,7 @@ before_install:
 script: 
   - docker run knsakib/react-test npm test -- --coverage 
 
-after_sucess:
+after_success:
   - docker build -t knsakib/react-client ./client
   - docker build -t knsakib/nginx-router ./nginx-router
   - docker build -t knsakib/express-api-server ./server
