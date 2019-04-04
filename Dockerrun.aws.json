@@ -1,0 +1,36 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "react-client",
+            "image": "knsakib/react-client",
+            "hostname": "client",
+            "essentail": false
+        },
+        {
+            "name": "express-api-server",
+            "image": "knsakib/express-api-server",
+            "hostname": "api",
+            "essentail": false
+        },
+        {
+            "name": "nginx-router",
+            "image": "knsakib/nginx-router",
+            "hostname": "nginx",
+            "essentail": true,
+            "portMappings": [
+                {
+                    "hostport": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": ["react-client", "express-api-server"]
+        },
+        {
+            "name": "fib-worker",
+            "image": "knsakib/fib-worker",
+            "hostname": "worker",
+            "essentail": false
+        }
+    ]
+}
