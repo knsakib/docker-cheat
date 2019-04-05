@@ -24,6 +24,18 @@ after_success:
   - docker push knsakib/express-api-server
   - docker push knsakib/fib-worker
 
+  deploy:
+    provider: elasticbeanstalk
+    region: "ca-central-1"
+    app: "docker-cheat"
+    env: "DockerCheat-env-1"
+    bucket_name: "elasticbeanstalk-ca-central-1-194714129889"
+    bucket_path: "docker-cheat"
+    on:
+      branch: Lesson-150-AWS-Multi-Docker-Beanstalk-Deployment
+    access_key_id: $AWS_BEANSTALK_ACCESS_KEY
+    secret_access_key:
+      secure: "$AWS_BEANSTALK_ACCESS_SECRET"
 
 
   
