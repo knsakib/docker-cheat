@@ -35,6 +35,8 @@ under configuration which is unfortunately clear text.
 ```
 We put the deployment section. We almost copied it from
 Lesson-91-AWS-Beanstalk-Automatic-Deployment Branch. We are only 
-deploying from this branch. 
+deploying from this branch. For elastic beanstalk we must define a 
+memory option for each conatiner to tell elastic beanstalk how 
+much memory we will define for each container.
 ```
 

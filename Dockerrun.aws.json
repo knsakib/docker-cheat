@@ -5,19 +5,22 @@
             "name": "react-client",
             "image": "knsakib/react-client",
             "hostname": "client",
-            "essentail": false
+            "essentail": false,
+            "memory": 128
         },
         {
             "name": "express-api-server",
             "image": "knsakib/express-api-server",
             "hostname": "api",
-            "essentail": false
+            "essentail": false,
+            "memory": 128
         },
         {
             "name": "nginx-router",
             "image": "knsakib/nginx-router",
             "hostname": "nginx",
             "essentail": true,
+            "memory": 128,
             "portMappings": [
                 {
                     "hostport": 80,
@@ -30,7 +33,8 @@
             "name": "fib-worker",
             "image": "knsakib/fib-worker",
             "hostname": "worker",
-            "essentail": false
+            "essentail": false,
+            "memory": 128
         }
     ]
 }
