@@ -16,24 +16,24 @@
             "memory": 128
         },
         {
+            "name": "fib-worker",
+            "image": "knsakib/fib-worker",
+            "hostname": "worker",
+            "essential": false,
+            "memory": 128
+        },
+        {
             "name": "nginx-router",
             "image": "knsakib/nginx-router",
             "hostname": "nginx",
             "essential": true,
-            "memory": 128,
             "portMappings": [
                 {
                     "hostport": 80,
                     "containerPort": 80
                 }
             ],
-            "links": ["react-client", "express-api-server"]
-        },
-        {
-            "name": "fib-worker",
-            "image": "knsakib/fib-worker",
-            "hostname": "worker",
-            "essential": false,
+            "links": ["react-client", "express-api-server"],
             "memory": 128
         }
     ]
