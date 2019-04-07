@@ -14,7 +14,7 @@ new value then puts back it into redis
 ### Written a Dockerrun.aws.json
 ```
 Here we will not build the images. Rather we will just pull the built 
-images. 
+images.
 ```
 ### maintaining database in container
 ```
