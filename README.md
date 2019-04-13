@@ -49,6 +49,9 @@ exposing the service with the NodePosrt
 If we use minikube then we should run, kubectl 
 config use-context minikube If we use latest 
 docker for desktop that comes with kubernetes 
-then we should run, kubectl config 
-use-context docker-for-desktop 
+then we should run, 
+kubectl config use-context docker-for-desktop. 
+Then we run
+kubectl apply -f client-pod.yaml
+kubectl apply -f client-node-port.yaml 
 ```
