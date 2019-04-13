@@ -1,42 +1,54 @@
 # docker-cheat
 
-### Multi Docker App
+### kubernetes Api version
 ```
-Frontend: React
+apiversion: v1 
+means: componentStatus, configMap, Endpoints, 
+Event, Namespace, Pod, Service, Deployment, 
+ReplicaSet, ReplicationController etc.
 
-Backend: 
-1. Express will store permanent list of indexes that have been received
-2. Express will store all the "indexes" and "calculated values" as key-pairs
-3. Worker watches redis for new indexes, pulls each new indexes, calcualtes 
-new value then puts back it into redis
+apiVersion: apps/v1
+means: ControllerRevision, StatefulSet
+```
+### Pop Properties
+```
+conrainers name property will used for network
+mapping. 
+```
+### object types
+```
+Project types service means that we want to do
+some networking in a K8s Cluster. 4 types of 
+services: 
+ClusterIP: 
+NodePort: expose to outside world. 
+Only Good for Development. 
+LoadBalancer: 
+Ingress:
+```
+### Kube Proxy
+```
+Kube Proxy will defined how to route
+the request. 
+```
+### service ports and label selector
+```
+We use posrts and label selector to define
+which servcice will route the traffic to which
+pod. We defined selector: ###:### to define the 
+name of the pod, which is metaDate: labels: ###:### 
+section. Then we use 'target port' to target 
+the ports of the pod. 'port' is how other pods
+will communicate to this port. NodePort is 
+exposing the service with the NodePosrt
 
 ```
-### Written a Dockerrun.aws.json
-```
-Here we will not build the images. Rather we will just pull the built 
-images.
-```
-### maintaining database in container
-```
-Here we will use AWS Relational Database Services(RDS) for Postgres
-and Amazon Elastic Cache for Redis. 
-```
-### Security Group
-```
-We created security Group and allow ports and IPs and ttached those
-groups to our redis, postgres and beanstlk instance.  
-```
-### Environment Variables
-```
-We also setup the environment variables in beanstalk software card 
-under configuration which is unfortunately clear text.   
-```
-### Travis CI
-```
-We put the deployment section. We almost copied it from
-Lesson-91-AWS-Beanstalk-Automatic-Deployment Branch. We are only 
-deploying from this branch. For elastic beanstalk we must define a 
-memory option for each conatiner to tell elastic beanstalk how 
-much memory we will define for each container.
-```
 
+### kubectl config use-context
+```
+If we use minikube then we should run, kubectl 
+config use-context minikube If we use latest 
+docker for desktop that comes with kubernetes 
+then we should run, kubectl config 
+use-context docker-for-desktop 
+```
