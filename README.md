@@ -1,57 +1,31 @@
 # docker-cheat
 
-### kubernetes Api version
+### kubernetes Imperative Approach 
 ```
-apiversion: v1 
-means: componentStatus, configMap, Endpoints, 
-Event, Namespace, Pod, Service, Deployment, 
-ReplicaSet, ReplicationController etc.
-
-apiVersion: apps/v1
-means: ControllerRevision, StatefulSet
+Create 3 containers 
+Create another 2 containers 
+Delete 1 container
+Those X number of containers should use v1.23
 ```
-### Pop Properties
+### kubernetes Declerative Approach 
 ```
-conrainers name property will used for network
-mapping. 
+There should be 3 containers
+There shoudl be 5 containers
+There shoudl be 4 containers
+There should X number of containers with v1.23
 ```
-### object types
+### Updating Pods by Deployment
 ```
-Project types service means that we want to do
-some networking in a K8s Cluster. 4 types of 
-services: 
-ClusterIP: 
-NodePort: expose to outside world. 
-Only Good for Development. 
-LoadBalancer: 
-Ingress:
+- We can update images in a running pods by 
+kubectl apply -f file.yaml command by 'pod' object
+but we can not update ports by 'pod' object like this
+- So, we need to update these kind of information in pods
+by 'deployment' object. 
 ```
-### Kube Proxy
+### Imperative Update only during the update of image
 ```
-Kube Proxy will defined how to route
-the request. 
-```
-### service ports and label selector
-```
-We use posrts and label selector to define
-which servcice will route the traffic to which
-pod. We defined selector: ###:### to define the 
-name of the pod, which is metaDate: labels: ###:### 
-section. Then we use 'target port' to target 
-the ports of the pod. 'port' is how other pods
-will communicate to this port. NodePort is 
-exposing the service with the NodePosrt
-
-```
-
-### kubectl config use-context
-```
-If we use minikube then we should run, kubectl 
-config use-context minikube If we use latest 
-docker for desktop that comes with kubernetes 
-then we should run, 
-kubectl config use-context docker-for-desktop. 
-Then we run
-kubectl apply -f client-pod.yaml
-kubectl apply -f client-node-port.yaml 
+1. docker build -t knsakib/client:v3 .
+2. docker puash knsakib/client:v3
+3. kubectl set image deployment/client-deployment client=knsakib/client:v3
+[ kubectl set image <object_type>/<object_name> <container_name>=<new_image> ]
 ```
