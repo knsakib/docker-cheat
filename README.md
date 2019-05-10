@@ -1,31 +1,36 @@
 # docker-cheat
 
-### kubernetes Imperative Approach 
+### PVC: Persistent Volume Claim
 ```
-Create 3 containers 
-Create another 2 containers 
-Delete 1 container
-Those X number of containers should use v1.23
+- We never use multiple replicas without extra configuration 
+to make them aware of each other. 
 ```
-### kubernetes Declerative Approach 
+
+### Volume
 ```
-There should be 3 containers
-There shoudl be 5 containers
-There shoudl be 4 containers
-There should X number of containers with v1.23
+- Volume is a K8s Object
+- There are two types:
+1. Volumes(K8s Object): Acssociated to a Pod If the container 
+dies inside the podthe new container has access to all 
+the data. If the pod dies, volume dies. 
+2. Persistent Volumes: Volume outside the pods. If the Pod
+crashes, it persists, when new pod is created.  
+3. PVC: The volume sample/sets that are avialble inside the cluster 
+for pods when it is created.
+4. Statistically Porvisioned PVC: PVC that are created /defined 
+ahead of the time of clainms.  
+5. Dynamically Porvisioned PVC: Persistent Volume that is created 
+on the fly of during the volume claim.  
 ```
-### Updating Pods by Deployment
-```
-- We can update images in a running pods by 
-kubectl apply -f file.yaml command by 'pod' object
-but we can not update ports by 'pod' object like this
-- So, we need to update these kind of information in pods
-by 'deployment' object. 
-```
-### Imperative Update only during the update of image
-```
-1. docker build -t knsakib/client:v3 .
-2. docker push knsakib/client:v3
-3. kubectl set image deployment/client-deployment client=knsakib/client:v3
-[ kubectl set image <object_type>/<object_name> <container_name>=<new_image> ]
-```
+
+ ### accessModes: 
+ ```
+ - ReadWriteOnce: can be used single node at a time
+ - ReadOnlyMany: multiple nodes can read from this persistent volumes
+ - ReadWriteMany: Multiple nodes can read and write on that volume at the same time. 
+ ```
+
+ ### subPath: 
+ ```
+ - volume path will saved under subPath = postgres specific for Postgres
+ ```
