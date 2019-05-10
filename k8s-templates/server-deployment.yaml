@@ -17,3 +17,14 @@ spec:
           image: knsakib/express-api-server
           ports: 
             - containerPort: 5000
+          env:
+            - name: REDIS_HOST
+              value: redis-cluster-ip-service
+            - name: REDIS_HOST
+              value: postgres
+            - name: PGHOST
+              value: postgres-cluster-ip-service
+            - name: PGPORT
+              value: 5432
+            - name: PGDATABASE
+              value: postgres #it is the default database used by default user. may not good in prod for security 
