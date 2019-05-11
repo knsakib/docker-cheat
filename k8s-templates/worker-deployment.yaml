@@ -19,4 +19,4 @@ spec:
             - name: REDIS_HOST
               value: server-cluster-ip-service # this is the name of redis cluster IP service
             - name: REDIS_PORT
-              value: 6379
+              value: '6379'
