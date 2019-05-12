@@ -34,3 +34,14 @@ customizing it.  For example customizing default.conf. We can use that but Nginx
 Extra feature like sticky seesion, direcltly routing traffic to pods instead of Cluster IP 
 service and it is built for specially handing kubernetes traffic.
 ```
+
+### K8s Nginx ingress controller
+```
+Installing/configuring Mandetory Part: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/mandatory.yaml
+Then for Docker/K8s for Mac: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/provider/cloud-generic.yaml
+```
+
+### Nginx ingress controller configuration
+```
+Annottaions: It is higher level configuration on Nginx Ingress Controller. 
+```
