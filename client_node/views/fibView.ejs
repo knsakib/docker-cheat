@@ -1,0 +1,32 @@
+
+        <div class="container" style="margin-top: 40px;">
+
+                <div class="row">
+                                            
+                    <div class="card-content">
+                        
+                        <p><%= values %></p> 
+                    </div>
+
+                </div>
+
+                <div>
+
+                    <form>
+                        
+                        <label for="index">Enter your index:</label>
+                        <input type="number"
+                        onChange = {event => this.setState({ index: event.target.value })}
+                        />
+                        <button>Submit</button>
+                    </form>
+                    
+                    <h3>Index Values that I have seen</h3>
+                    <%= seenIndexes %>
+                    <h3>Calculated Values:</h3>
+                    <%= values %>
+                </div>
+
+        </div>
+
+
