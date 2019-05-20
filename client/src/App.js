@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Link, NavLink} from 'react-router-dom'
 import Fib from './Fib';
 import OtherPage from './OtherPage';
 
@@ -10,13 +9,20 @@ class App extends Component {
     return (
       <Router>
       <div className="App">
-        <header className="App-header">
+        
+        <nav className="nav-wrapper red lighten-2">
+          <div className="container">
+            <Link className="brand-logo" to="/">Demo App(React-Client)</Link>
+              <ul className="right">
           
-          <Link to="/">Home</Link>
-          <Link to="/otherpage">Other Page</Link>
+                <li><NavLink to="/">Home</NavLink></li>
+                <li><NavLink to="/otherpage">Other Page</NavLink></li>
 
-        </header>
-        <div>
+              </ul>
+          </div>
+        </nav> 
+
+        <div className="container">
           <Route exact path="/" component={Fib} />
           <Route path="/otherpage" component={OtherPage} />
 

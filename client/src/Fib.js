@@ -58,19 +58,28 @@ class Fib extends Component {
 
     render(){
         return(
-            <div>
-                <form onSubmit = {this.handleSubmit}>
-                    <label>Enter your index:</label>
-                    <input 
-                    value ={this.state.index}
-                    onChange = {event => this.setState({ index: event.target.value })}
-                    />
-                    <button>Submit</button>
-                </form>
-                <h3>Index Values that I have seen</h3>
-                {this.renderSeenIndexes()}
-                <h3>Calculated Values:</h3>
-                {this.renderValues()}
+            <div className="container">
+                <div className="row center">
+                    
+                    <form className="center" onSubmit = {this.handleSubmit}>
+                        <label><h4>Enter your index:</h4></label>
+                            <div className="index-entry center" align="center">
+                                <input 
+                                value ={this.state.index}
+                                onChange = {event => this.setState({ index: event.target.value })}
+                                />
+                            </div>
+                            <button className="btn grey">Submit</button>
+                    </form>
+
+                </div>
+                <div className="row center">
+                        
+                        <h4>Index Values that I have seen: {this.renderSeenIndexes()}</h4>
+                        
+                        <h4>Calculated Values: {this.renderValues()}</h4>
+                        
+                </div>
             </div>
         )
     }

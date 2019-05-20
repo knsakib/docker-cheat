@@ -1,33 +1,33 @@
-upstream client {
-    server client:3000;
-}
+# upstream client {
+#     server client:3000;
+# }
 
 upstream api {
     server api:5000;
 }
 
-# upstream client_node {
-#     server client_node:4000;
-# }
+upstream client_node {
+    server client_node:4000;
+}
 
 server {
     listen 80;
 
-    location / {
-        proxy_pass http://client;
-    }
+    # location / {
+    #     proxy_pass http://client;
+    # }
 
     # location /client-node {
     #     rewrite /client-node/(.*) /$1 break;
     #     proxy_pass http://client_node;
     # }
 
-    # location / {
-    #     proxy_pass http://client_node;
-    # }
+    location / {
+        proxy_pass http://client_node;
+    }
 
     location /sockjs-node {
-        proxy_pass http://client;
+        proxy_pass http://client_node;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "Upgrade";
