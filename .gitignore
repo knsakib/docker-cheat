@@ -49,3 +49,5 @@ firebase-debug.log*
 .env.development.local
 .env.test.local
 .env.production.local
+
+docker-cheat-service-account.json

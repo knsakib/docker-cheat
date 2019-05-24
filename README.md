@@ -1,5 +1,19 @@
 # docker-cheat
 
+### travis
+```
+command = docker run -it -v $(pwd):/app ruby:2.3 sh
+pwd = present working directory mapping to app directory inside the container 
+command inside the container = 
+1. gem install travis --no-document
+2. ls; cd app;
+3. travis login
+4. travis encrypt-file docker-cheat-service-account.json -r knsakib/docker-cheat
+-> knsakib/docker-cheat is the git repo name
+5. Put the filename in the gitignore
+6. exit
+```
+
 ### K8S Local Deployment(if all the images are already created and Pushed)
 ```
  1. kubectl apply k8s-templates/
