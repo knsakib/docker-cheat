@@ -14,6 +14,16 @@ command inside the container =
 6. exit
 ```
 
+### Unique image Tag
+```
+1. git rev-parse HEAD
+1. OR git log
+2. We will tag the image with git SHA
+3. When there will any issue in the deployed version, we can just -> 'git checkout that-SHA' and then we can debug. 
+4. We are also tagging by 'latest' because if we want to clone (not pull) the code or rebuild the cluster completely
+from scratch we can always pull the latest image.   
+```
+
 ### K8S Local Deployment(if all the images are already created and Pushed)
 ```
  1. kubectl apply k8s-templates/
