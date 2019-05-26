@@ -14,7 +14,7 @@ docker push knsakib/express-api-server:$SHA
 docker push knsakib/fib-worker:$SHA
 # docker push knsakib/nginx-router:$SHA
 
-kubectl apply -f k8s-template/
+kubectl apply -f k8s-templates/
 
 kubectl set image deployments/server-deployment server=knsakib/express-api-server:$SHA
 kubectl set image deployments/client-deployment client=knsakib/react-client:$SHA
