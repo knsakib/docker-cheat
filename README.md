@@ -1,16 +1,49 @@
 # docker-cheat
 
+### K8S Local Deployment(if all the images are already created and Pushed)
+```
+ 1. kubectl apply k8s-templates/
+ 2. Create Secret: kubectl create secret generic pgpassword --from-literal PGPASSWORD=asdf
+ 3. kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/mandatory.yaml
+ 4. For Docker for desktop: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/provider/cloud-generic.yaml
+ 4. Or for Minikube: minikube addons enable ingress
+```
+
+### K8S Local Deployment(if all the images are NOT created and Pushed)
+```
+ 1. Test in Local: docker-compose up --build
+ 2. kubectl apply k8s-templates/
+ 1. For a change to apply or new build: docker build -t knsakib/react-client ./client
+ 2. Push the image: docker push knsakib/react-client
+ 3. Create Secret: kubectl create secret generic pgpassword --from-literal PGPASSWORD=asdf
+ 4. kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/mandatory.yaml
+ 5. For Docker for desktop: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/provider/cloud-generic.yaml
+ 6. Or for Minikube: minikube addons enable ingress
+```
+
+### Docker Run and Test in Localhost dev environment (without K8S)
+```
+1. docker-compose up --build
+2. The shortcommings of running test suit is that we dont have any stdin or stdout inside the container. So that we can choose a test suit or quite from test env by pressing q or similar. That is why, we will open a new terminal 
+3. In the new terminal run, docker exec -it dockerID sh (dockerID will can be found by 'docker ps' or the ID can be found in the docker build process). There if we can see that if we run 'ps' we can see that one main process is responsible for running npm run start and naother process is responsible for running npm run test. stdin or stdout always refer to the main process that is we are not able to send the command to the test suit. This is for react/javascript test suit. But there are test suit where we run the test and it would spit out the output. 
+2. So, if we really want to send the command after docker-compose build we shoudl open the new terminal and run
+3. docker ps
+4. Find out the DOckerID which is react client and then
+5. Run docker exec -it dockerID npm run test
+6. This will use the same volume that 'npm start' is using so, test any change in the test suit will be alive.   
+7. We can also press q, w etc. to stdin.
+```
+
 ### travis
 ```
-command = docker run -it -v $(pwd):/app ruby:2.3 sh
+get a ruby installed container command = docker run -it -v $(pwd):/app ruby:2.3 sh
 pwd = present working directory mapping to app directory inside the container 
 command inside the container = 
 1. gem install travis --no-document
 2. ls; cd app;
 3. travis login
-4. travis encrypt-file docker-cheat-service-account.json -r knsakib/docker-cheat
--> knsakib/docker-cheat is the git repo name
-5. Put the filename in the gitignore
+4. travis encrypt-file docker-cheat-service-account.json -r knsakib/docker-cheat ['knsakib/docker-cheat' is the github git repo name]
+5. Put the service-account filename in the gitignore
 6. exit
 ```
 
@@ -20,8 +53,7 @@ command inside the container =
 1. OR git log
 2. We will tag the image with git SHA
 3. When there will any issue in the deployed version, we can just -> 'git checkout that-SHA' and then we can debug. 
-4. We are also tagging by 'latest' because if we want to clone (not pull) the code or rebuild the cluster completely
-from scratch we can always pull the latest image.   
+4. We are also tagging by 'latest' because if we want to clone (not pull) the code or rebuild the cluster completely from scratch we can always pull the latest image.   
 ```
 
 ### Secret creation in GCP K8S engine by imperative command 
@@ -40,8 +72,7 @@ User Accounts: identifies as a Person
 Service Accounts: identifies a POD/program/service running inside the cluster. 
 ClusterRoleBinding: it is the authrorization. It authorizes an account to change anything across the entire Clsuter.
 RoleBinding: it is the authrorization. It authorizes an account to change anything only inside a NameSpace. 
-NameSpaces: kubectl get namespaces -> will show all the namespaces. So, the practice is create RoleBinding that will allow a servic eaccount to make some chanes 
-inside a specific namespace. So, we will 
+NameSpaces: kubectl get namespaces -> will show all the namespaces. So, the practice is create RoleBinding that will allow a servic eaccount to make some chanes inside a specific NameSpace. So, we will 
 1. create a service account 
 2. Create a ClusterRoleBinding and ties that with the service account; it can change anything clusterwise
 2. Or create a RoleBinding and ties that with the service account anything in a perticular namespace. 
@@ -66,8 +97,7 @@ do the same automatic.
 Helm client: a CLI tooll used to send the command.
 Tiller: It is a server that will run inside K8S clsuter. 
 Install helm from script:
-1. RBAC prohibits any pod to change any configuration inside K8S or change any pther pods. Helm will run as a pod. SO we may need change RBAC for helm. That is why
-we did the steps in the above section.
+1. RBAC prohibits any pod to change any configuration inside K8S or change any pther pods. Helm will run as a pod. SO we may need change RBAC for helm. That is why we did the steps in the above section.
 2. helm install stable/nginx-ingress --name my-nginx --set rbac.create=true 
 ```
 
