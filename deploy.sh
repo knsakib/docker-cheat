@@ -7,12 +7,12 @@ docker build -t knsakib/fib-worker:latest -t knsakib/fib-worker:$SHA -f ./worker
 docker push knsakib/react-client:latest
 docker push knsakib/express-api-server:latest
 docker push knsakib/fib-worker:latest
-docker push knsakib/nginx-router:latest
+# docker push knsakib/nginx-router:latest
 
 docker push knsakib/react-client:$SHA
 docker push knsakib/express-api-server:$SHA
 docker push knsakib/fib-worker:$SHA
-docker push knsakib/nginx-router:$SHA
+# docker push knsakib/nginx-router:$SHA
 
 kubectl apply -f k8s-template/
 
