@@ -24,4 +24,4 @@ deploy:
   provider: script
   script: bash ./deploy.sh 
   on: 
-    branch: master
+    branch: Lesson-253-GCP-K8S-Deployment
