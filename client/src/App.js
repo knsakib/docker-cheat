@@ -12,7 +12,7 @@ class App extends Component {
         
         <nav className="nav-wrapper red lighten-2">
           <div className="container">
-            <Link className="brand-logo" to="/">Demo App(React-Client)</Link>
+            <Link className="brand-logo" to="/">Demo App(ReactClient)</Link>
               <ul className="right">
           
                 <li><NavLink to="/">Home</NavLink></li>
