@@ -101,28 +101,8 @@ Install helm from script:
 2. helm install stable/nginx-ingress --name my-nginx --set rbac.create=true 
 ```
 
-### K8S Local Deployment(if all the images are already created and Pushed)
-```
- 1. kubectl apply k8s-templates/
- 2. Create Secret: kubectl create secret generic pgpassword --from-literal PGPASSWORD=asdf
- 3. kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/mandatory.yaml
- 4. For Docker for desktop: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/provider/cloud-generic.yaml
- 4. Or for Minikube: minikube addons enable ingress
-```
-
-### K8S Local Deployment(if all the images are NOT created and Pushed)
-```
- 1. Test in Local: docker-compose up --build
- 2. For a Specific or new build: docker build -t knsakib/react-client ./client
- 3. Push the image: docker push knsakib/react-client
- 4. kubectl apply k8s-templates/
- 5. Create Secret: kubectl create secret generic pgpassword --from-literal PGPASSWORD=asdf
- 6. kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/mandatory.yaml
- 7. For Docker for desktop: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/provider/cloud-generic.yaml
- 7. Or for Minikube: minikube addons enable ingress
-```
-
 ### Install https by Let's encrypt via helm cert manager
+```
 1. Intstall cert-manager via helm from https://docs.cert-manager.io/en/latest/getting-started/install/kubernetes.html
 2. kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.8/deploy/manifests/00-crds.yaml
 3. kubectl create namespace cert-manager
@@ -132,3 +112,5 @@ Install helm from script:
 7. helm install --name cert-manager --namespace cert-manager --version v0.8.0 jetstack/cert-manager
 7. OR if the above does not work, helm install --name cert-manager --namespace cert-manager --set webhook.enabled=false --version v0.8.0 jetstack/cert-manager
 8. Deploy the application
+9. Reconfigure annotation section in ingress-service.yaml and redploy
+```

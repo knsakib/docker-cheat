@@ -24,4 +24,4 @@ deploy:
   provider: script
   script: bash ./deploy.sh 
   on: 
-    branch: Lesson-265-Install-Cert-Manager
+    branch: Lesson-267-Nginx-Ingress-Https
