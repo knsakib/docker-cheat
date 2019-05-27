@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Demo App</title>
+    <link rel="stylesheet" href="/materialize.min.css">
+    
+    <style type=text/css>
+        .index-entry { 
+          position: relative;
+          width: 50%;
+          margin-left: 25%;
+          } 
+    </style>
+
+    <header class="main-header">
+        <nav class="nav-wrapper red lighten-2">
+
+                <div class="container">
+                    <a href="/" class="brand-logo">
+                        <!-- <img src="/img/logo.png" style="width: 84px;"> -->
+                        Demo App(Node-Client)
+                    </a>
+  
+                    <ul class="right">
+                        <li class="main-header__item">
+                            <a class="" href="/">Home</a>
+                        </li>
+                        <li class="main-header__item">
+                            <a class="" href="/other-page">Other Page</a>
+                        </li>
+                    </ul>
+                </div>
+        </nav>
+    </header>
+
+    <body>
+
+        <div class="container">
+
+                <div class="row center">
+
+                    <form class="index-entry center" method="POST" action="/">
+                        
+                        <label for="index"><h4>Enter your index:<h4></label>
+                        <input name="index" type="number"/>
+                        <button class="btn grey">Submit</button>
+                    </form>
+
+                </div>   
+             
+                <div class="row center">
+                    
+                    <h4>Index Values that I have seen: <%= seenIndexes %></h4>
+                    
+                    <h4>Calculated Values: <%= values %></h4>
+                    
+                </div>
+
+        </div>
+
+    </body>
+
+</html>
+
