@@ -5,7 +5,7 @@ metadata:
 spec:
   secretName: em-bracelet-com
   issuerRef:
-    name: letsencypt-prod
+    name: letsencrypt-prod
     kind: ClusterIssuer
   commonName: em-bracelet.com
   dnsNames:
