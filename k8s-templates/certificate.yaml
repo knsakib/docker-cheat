@@ -1,0 +1,20 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: em-bracelet-com-tls
+spec:
+  secretName: em-bracelet-com
+  issuerRef:
+    name: letsencypt-prod
+    kind: ClusterIssuer
+  commonName: em-bracelet.com
+  dnsNames:
+    - em-bracelet.com
+    - www.em-bracelet.com
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - em-bracelet.com
+          - www.em-bracelet.com

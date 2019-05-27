@@ -121,3 +121,14 @@ Install helm from script:
  7. For Docker for desktop: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/provider/cloud-generic.yaml
  7. Or for Minikube: minikube addons enable ingress
 ```
+
+### Install https by Let's encrypt via helm cert manager
+1. Intstall cert-manager via helm from https://docs.cert-manager.io/en/latest/getting-started/install/kubernetes.html
+2. kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.8/deploy/manifests/00-crds.yaml
+3. kubectl create namespace cert-manager
+4. kubectl label namespace cert-manager certmanager.k8s.io/disable-validation=true
+5. helm repo add jetstack https://charts.jetstack.io
+6. helm repo update
+7. helm install --name cert-manager --namespace cert-manager --version v0.8.0 jetstack/cert-manager
+7. OR if the above does not work, helm install --name cert-manager --namespace cert-manager --set webhook.enabled=false --version v0.8.0 jetstack/cert-manager
+8. Deploy the application

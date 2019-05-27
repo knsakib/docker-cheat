@@ -24,4 +24,4 @@ deploy:
   provider: script
   script: bash ./deploy.sh 
   on: 
-    branch: Lesson-253-GCP-K8S-Deployment
+    branch: Lesson-265-Install-Cert-Manager
