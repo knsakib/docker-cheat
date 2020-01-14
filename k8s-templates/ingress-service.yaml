@@ -10,11 +10,11 @@ metadata:
 spec:
   tls:
     - hosts:
-        - em-bracelet.com
-        - www.em-bracelet.com
-      secretName: em-bracelet-com     
+        - mydomain.com
+        - www.mydomain.com
+      secretName: my-domain-com     
   rules:
-    - host: em-bracelet.com
+    - host: mydomain.com
       http:
         paths:
         - path: /?(.*)
@@ -25,7 +25,7 @@ spec:
           backend:
             serviceName: server-cluster-ip-service
             servicePort: 5000
-    - host: www.em-bracelet.com
+    - host: www.mydomain.com
       http:
         paths:
         - path: /?(.*)
